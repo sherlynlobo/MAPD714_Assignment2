@@ -14,16 +14,31 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
 
-    var toDos : [ToDo] = []
+    var toDos : [ToDoCoreData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        toDos = createToDos()
-        
-        
+    //toDos = createToDos()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getToDos()
+    }
+    func getToDos()
+    {
+         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+         {
+          
+          if let coreDataToDos = try? context.fetch(ToDoCoreData.fetchRequest()) as? [ToDoCoreData]
+          {
+            if let theToDos = coreDataToDos
+            {
+                toDos = theToDos
+                tableView.reloadData()
+            }
+          }
+        }
+    }
     func createToDos() -> [ToDo]
     {
         let eggs = ToDo()
@@ -54,13 +69,17 @@ class ToDoTableViewController: UITableViewController {
         
         // Configure the cell...
 
-        if toDo.important
+        
+        if let name = toDo.name
         {
-            cell.textLabel?.text = "★" + toDo.name
-            
-        }
-        else{
-        cell.textLabel?.text = toDo.name
+            if toDo.important
+            {
+                cell.textLabel?.text = "★" + name
+                
+            }
+            else{
+            cell.textLabel?.text = toDo.name
+            }
         }
         return cell
     }
