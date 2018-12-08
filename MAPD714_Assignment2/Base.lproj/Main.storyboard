@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="1220" y="81.409295352323838"/>
         </scene>
-        <!--View Controller-->
+        <!--Add To Do View Controller-->
         <scene sceneID="af3-qV-B15">
             <objects>
-                <viewController id="wRg-km-Qvb" sceneMemberID="viewController">
+                <viewController id="wRg-km-Qvb" customClass="AddToDoViewController" customModule="MAPD714_Assignment2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="agz-qh-1bl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,11 +83,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="wRg-km-Qvb" eventType="touchUpInside" id="fQO-Kb-B3F"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="mvJ-HF-Jza"/>
                     </view>
+                    <connections>
+                        <outlet property="importantSwitch" destination="8HJ-QX-kga" id="Iyi-Gh-ucy"/>
+                        <outlet property="titleTextField" destination="4lA-rb-cUJ" id="IRk-5U-NFL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLr-fv-6i8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
