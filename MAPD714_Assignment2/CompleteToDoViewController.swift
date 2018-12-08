@@ -23,6 +23,17 @@ class CompleteToDoViewController: UIViewController {
 
    
     @IBAction func completeTapped(_ sender: UIButton) {
+        var index = 0
+        for toDo in previousVC.toDos
+        {
+            if toDo.name == selectedTodo.name
+            {
+                print("We found it! \(toDo.name) \(index)")
+            }
+            index += 1
+            
+        }
+        
     }
     
 
