@@ -1,10 +1,14 @@
 //
 //  ToDoTableViewController.swift
 //  MAPD714_Assignment2
-//
+
 //  Created by Sherlyn Lobo on 2018-12-07.
 //  Copyright © 2018 Sherlyn Lobo. All rights reserved.
-//
+
+//  File Name       : ToDoTableViewController.swift
+//  Author Name     : Sherlyn Lobo
+//  Student ID      : 301013071
+//  App Description : ToDo List App
 
 import UIKit
 
@@ -52,13 +56,20 @@ class ToDoTableViewController: UITableViewController {
 
         if toDo.important
         {
-            cell.textLabel?.text = "❗️" + toDo.name
+            cell.textLabel?.text = "★" + toDo.name
             
         }
         else{
         cell.textLabel?.text = toDo.name
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let addVC = segue.destination as! AddToDoViewController
+        addVC.previousVC = self
+        
     }
 
 }

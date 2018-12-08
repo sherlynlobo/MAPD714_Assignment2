@@ -1,18 +1,25 @@
 //
 //  AddToDoViewController.swift
 //  MAPD714_Assignment2
-//
+
 //  Created by Sherlyn Lobo on 2018-12-08.
 //  Copyright © 2018 Sherlyn Lobo. All rights reserved.
-//
+
+//  File Name       : ToDoTableViewController.swift
+//  Author Name     : Sherlyn Lobo
+//  Student ID      : 301013071
+//  App Description : ToDo List App
 
 import UIKit
 
 class AddToDoViewController: UIViewController {
 
     
-    @IBOutlet weak var titleTextField: UILabel!
+    var previousVC = ToDoTableViewController()
     
+    
+    
+    @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var importantSwitch: UISwitch!
     
@@ -27,6 +34,15 @@ class AddToDoViewController: UIViewController {
 
 
     @IBAction func addTapped(_ sender: UIButton) {
+        
+        let toDo = ToDo()
+        toDo.name = titleTextField.text!
+        toDo.important = importantSwitch.isOn
+        
+        previousVC.toDos.append(toDo)
+        previousVC.tableView.reloadData()
+        
+        navigationController?.popToRootViewController(animated: true)
     }
     
 
